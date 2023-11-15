@@ -47,8 +47,8 @@ def notifyBuild(String buildStatus = 'STARTED'){
     // Email notification
   emailext (
      to: "greshmaj99@gmail.com",
-     subject: Insurance build status,
-     body: insurance build completed successfully,
+     subject: "Insurance build status",
+     body: "insurance build completed successfully",
      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
   )
 }
