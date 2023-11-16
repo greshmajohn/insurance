@@ -1,33 +1,25 @@
 node {
-	 def WORKSPACE = "${env.WORKSPACE}" 
-	 
-     def dockerImageTag = "emp-insurance${env.BUILD_NUMBER}"
-     try{
-     	 notifyBuild('STARTED')
-     	 stage('Clone Repo') {
-        	git url: 'https://github.com/greshmajohn/insurance.git',
-            credentialsId: 'gitlabUserId',
-            branch: 'master'
-     	}
-     	 stage('Build docker') {
-         dockerImage = docker.build("emp-insurance:${env.BUILD_NUMBER}")
-   		 }
-   		  stage('Deploy docker'){
-          echo "Docker Image Tag Name: ${dockerImageTag}"
-          sh "docker stop emp-insurance || true && docker rm emp-insurance || true"
-          sh "docker run --name emp-insurance -d -p 8082:8082 emp-insurance:${env.BUILD_NUMBER}"
-    	}
-    	 
-     }
-     catch(e){
-   			 currentBuild.result = "FAILED"
-    	throw e
-		}finally{
-    		notifyBuild(currentBuild.result)
- 	}
-}
-def notifyBuild(String buildStatus = 'STARTED'){
+  try{
+    stage 'checkout project'
+    checkout scm
 
- // build status of null means successful
-  buildStatus =  buildStatus ?: 'SUCCESSFUL'
+    stage 'check env'
+    sh "mvn -v"
+    sh "java -version"
+
+    stage 'test'
+    sh "mvn test"
+
+    stage 'package'
+    sh "mvn package"
+
+    stage 'report'
+    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+
+    stage 'Artifact'
+    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
+
+  }catch(e){
+    throw e;
+  }
 }
