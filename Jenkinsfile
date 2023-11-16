@@ -1,5 +1,6 @@
-pipeline {
-	agent any
+node {
+	
+	 def WORKSPACE = "/var/lib/jenkins/workspace/insurance"
   stages {
   	stage('Maven Install') {
     	agent {
