@@ -1,16 +1,21 @@
 pipeline {
-	agent none
-  stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven:latest'
-        	 args '-u root'
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
         }
-      }
-      steps {
-      	sh 'mvn clean install'
-      }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-  }
 }
