@@ -1,18 +1,19 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven:latest'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-    }
-    stages {
-        stage('Build') {
-        	 environment {
-                  HOME="."
-                }
-            steps {
-                sh 'mvn -B'
-            }
-        }
-    }
+node {
+   
+try{
+   
+    stage('Clone Repo') {
+        // for display purposes
+        // Get some code from a GitHub repository
+       	 git url: 'https://github.com/greshmajohn/insurance.git',
+         branch: 'master'
+       
+     }
+    
+}catch(e){
+    currentBuild.result = "FAILED"
+    throw e
+}finally{
+    notifyBuild(currentBuild.result)
+ }
 }
