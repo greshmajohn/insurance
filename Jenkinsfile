@@ -7,6 +7,9 @@ pipeline {
     }
     stages {
         stage('Build') {
+        	 environment {
+                  HOME="."
+                }
             steps {
                 sh 'mvn -B'
             }
