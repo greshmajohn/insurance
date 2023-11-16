@@ -1,25 +1,15 @@
-node {
-   
-	try{
-   
-   	 stage('Clone Repo') {
-        	// for display purposes
-      	  // Get some code from a GitHub repository
-       		 git url: 'https://github.com/greshmajohn/insurance.git',
-       		 credentialsId: 'grejohn',
-        	 branch: 'master'
-       
-     }
-    
-	}catch(e){
-   	 	currentBuild.result = "FAILED"
-    	throw e
-	}finally{
-    	notifyBuild(currentBuild.result)
- 	}
+pipeline {
+	agent any
+  stages {
+  	stage('Maven Install') {
+    	agent {
+      	docker {
+        	image 'maven:3.5.0'
+        }
+      }
+      steps {
+      	sh 'mvn clean install'
+      }
+    }
+  }
 }
-def notifyBuild(String buildStatus = 'STARTED'){
-  
-  // build status of null means successful
-  buildStatus =  buildStatus ?: 'SUCCESSFUL'
- }
