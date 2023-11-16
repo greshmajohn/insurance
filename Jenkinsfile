@@ -1,25 +1,10 @@
-node {
-  try{
-    stage 'checkout project'
-    checkout scm
-
-    stage 'check env'
-    sh "mvn -v"
-    sh "java -version"
-
-    stage 'test'
-    sh "mvn test"
-
-    stage 'package'
-    sh "mvn package"
-
-    stage 'report'
-    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-
-    stage 'Artifact'
-    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
-
-  }catch(e){
-    throw e;
-  }
+pipeline {
+    agent { docker { image 'maven:3.9.5-eclipse-temurin-17-alpine' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
 }
