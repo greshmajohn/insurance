@@ -1,5 +1,6 @@
 node {
-	 def WORKSPACE = "/var/lib/jenkins/workspace/insurance"
+	 def WORKSPACE = "${env.WORKSPACE}" 
+	 
      def dockerImageTag = "emp-insurance${env.BUILD_NUMBER}"
      try{
      	 notifyBuild('STARTED')
