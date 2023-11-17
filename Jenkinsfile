@@ -44,6 +44,7 @@ pipeline {
 					withCredentials([usernamePassword(credentialsId: 'greshma.john.pallithazhathu@gmail.com', passwordVariable: 'Jinkuttan@2017', usernameVariable: 'greshmajithin')]) {
         			bat "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
          			bat 'docker push greshmajithin/emp-insurance:latest'
+         			}
 				}
     		  
    		 }
