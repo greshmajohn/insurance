@@ -32,7 +32,7 @@ pipeline {
 				steps{
 					echo "Build docker image"
 					
-					bat 'docker build -t emp-insurance:$BUILD_NUMBER .'
+					bat 'docker build -t emp-insurance:latest .'
 					
 				}
     		  
@@ -41,7 +41,9 @@ pipeline {
 				steps{
 					echo "docker deployment"
 					
-					bat 'docker run --name emp-insurance -d -p 8082:8082 emp-insurance:$BUILD_NUMBER'
+					withCredentials([usernamePassword(credentialsId: 'greshma.john.pallithazhathu@gmail.com', passwordVariable: 'Jinkuttan@2017', usernameVariable: 'greshmajithin')]) {
+        			bat "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+         			bat 'docker push greshmajithin/emp-insurance:latest'
 				}
     		  
    		 }
