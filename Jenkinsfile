@@ -1,10 +1,8 @@
 pipeline {
 
-	agent {
-		docker {
-			image 'maven:latest'
-		}
-		 
+	agent any
+	tools{
+		maven "M3"
 	}
 	
 	
