@@ -9,10 +9,17 @@ pipeline {
 	
 	
 	stages{
+	
+	
+		stage('Clone project') {
+   			steps{
+				checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/greshmajohn/insurance.git']])
+			}
+		}
 		
 		stage('Build') {
    			steps{
-				 sh 'mvn -Dmaven.test.failure.ignore=true install'
+				 sh 'mvn clean install'
 			}
 		}
 	}
