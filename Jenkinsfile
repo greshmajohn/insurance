@@ -19,7 +19,7 @@ pipeline {
 		
 		stage('Build') {
    			steps{
-				 sh 'clean package -Dmaven.test.skip=true'
+				 bat 'mvn clean package -Dmaven.test.skip=true'
 			}
 		}
 	}
