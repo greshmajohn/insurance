@@ -25,7 +25,7 @@ pipeline {
 		stage('Deployment') {
 				steps{
 					echo "deployment"
-					bat 'docker run --name greshmajithin/emp-insurance -d -p 8081:8081 greshmajithin/emp-insurance:latest'
+					bat 'docker run --name emp-insurance -d -p 8081:8081 emp-insurance:latest'
 				}
     		  
    		 }
