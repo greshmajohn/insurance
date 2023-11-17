@@ -1,7 +1,7 @@
 pipeline {
 
 	agent any
-	def customImage = docker.build("emp-insurance:${env.BUILD_ID}")
+	
 	tools{
 		maven "Maven"
 		 jdk 'jdk17' 
@@ -32,7 +32,7 @@ pipeline {
 				steps{
 					echo "Build docker image"
 					
-					bat 'docker build -t emp-insurance:latest .'
+					bat 'docker build -t emp-insurance:$BUILD_NUMBER .'
 					
 				}
     		  
@@ -41,7 +41,7 @@ pipeline {
 				steps{
 					echo "docker deployment"
 					
-					bat 'docker run --name emp-insurance -d -p 8082:8082 emp-insurance:latest'
+					bat 'docker run --name emp-insurance -d -p 8082:8082 emp-insurance:$BUILD_NUMBER'
 				}
     		  
    		 }
