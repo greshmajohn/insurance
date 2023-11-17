@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker { image 'maven:latest' } }
+    agent any
     stages {
         stage('build') {
             steps {
-                bat 'mvn --version'
+                sh 'mvn --version'
             }
         }
     }
