@@ -1,6 +1,7 @@
 pipeline {
 
 	agent any
+	def customImage = docker.build("emp-insurance:${env.BUILD_ID}")
 	tools{
 		maven "Maven"
 		 jdk 'jdk17' 
@@ -30,11 +31,6 @@ pipeline {
 		stage('Docker Build') {
 				steps{
 					echo "Build docker image"
-					if docker image inspect emp-insurance >/dev/null 2>&1; then
-    					echo "Image exists locally"
-					else
-   						 echo "Image does not exist locally"
-					fi
 					
 					bat 'docker build -t emp-insurance:latest .'
 					
