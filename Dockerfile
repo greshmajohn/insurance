@@ -1,4 +1,5 @@
 FROM jenkins/jenkins
+LABEL maintainer="greshmajithin"
 VOLUME /tmp/app
 EXPOSE 8082
 WORKDIR /home
