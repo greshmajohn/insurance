@@ -3,6 +3,7 @@ pipeline {
 	agent any
 	tools{
 		maven "Maven"
+		 jdk 'jdk17' 
 	}
 	
 	
@@ -12,6 +13,9 @@ pipeline {
 			steps{
 				echo "hello world"
 			}
+		}
+		stage('Build') {
+   			 // some block
 		}
 	}
  
