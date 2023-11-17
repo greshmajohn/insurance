@@ -28,8 +28,8 @@ pipeline {
 				 bat "mvn test -Punit"
 			}
 		}
-		stage("Deployment") {
-    		  echo 
+		stage('Deployment') {
+    		  echo "deployment"
    		 }
 	}
  
