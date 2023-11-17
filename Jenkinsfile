@@ -9,13 +9,18 @@ pipeline {
 	
 	
 	stages{
-		stage("Clone project"){
+		stage("Initialize"){
 			steps{
-				echo "hello world"
+				sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
 			}
 		}
 		stage('Build') {
-   			 // some block
+   			steps{
+				 sh 'mvn -Dmaven.test.failure.ignore=true install'
+			}
 		}
 	}
  
