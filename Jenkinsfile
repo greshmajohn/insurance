@@ -41,7 +41,7 @@ pipeline {
 				steps{
 					echo "docker deployment"
 					
-					withCredentials([usernamePassword( passwordVariable: 'Jinkuttan@2017', usernameVariable: 'greshmajithin')]) {
+					withCredentials([usernamePassword(credentialsId: 'greshmajithin', passwordVariable: 'Jinkuttan@2017', usernameVariable: 'greshmajithin')]) {
         			bat "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
          			bat 'docker push greshmajithin/emp-insurance:latest'
          			}
