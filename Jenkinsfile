@@ -11,11 +11,12 @@ pipeline {
 	stages{
 	
 	
-		stage('Clone project') {
+		/*stage('Clone project') {
+		
    			steps{
 				checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/greshmajohn/insurance.git']])
 			}
-		}
+		}*/
 		
 		stage('Build') {
    			steps{
@@ -27,6 +28,9 @@ pipeline {
 				 bat "mvn test -Punit"
 			}
 		}
+		stage("Deployment") {
+    		  echo 
+   		 }
 	}
  
   
