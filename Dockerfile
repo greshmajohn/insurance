@@ -1,5 +1,4 @@
-FROM jenkins/jenkins
-LABEL maintainer="greshmajithin"
+FROM openjdk:17
 VOLUME /tmp/app
 EXPOSE 8082
 WORKDIR /home
