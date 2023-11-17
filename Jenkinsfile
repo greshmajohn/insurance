@@ -1,12 +1,16 @@
-node {
+pipeline {
+
+	agent any
+	
+	
+	
+	stages{
+		stage("Clone project"){
+			steps{
+				echo "hello world"
+			}
+		}
+	}
  
-  stage("Clone project") {
-    git branch: 'master', url: 'https://github.com/greshmajohn/insurance.git'
-  }
   
-   stage('build'){
-        withMaven(maven: 'mvn') {
-            sh "mvn clean package"
-        }
-    }
 }
