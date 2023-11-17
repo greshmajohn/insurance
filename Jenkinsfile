@@ -22,11 +22,19 @@ pipeline {
 				 bat "mvn test -Punit"
 			}
 		}
-		stage('Deployment') {
+		stage('Docker Build') {
 				steps{
-					echo "deployment"
+					echo "Build docker image"
 					bat 'docker build -t emp-insurance:latest .'
-					bat 'docker run --name emp-insurance -d -p 8081:8081 emp-insurance:latest'
+					
+				}
+    		  
+   		 }
+   		 stage('Docker Build') {
+				steps{
+					echo "docker deployment"
+					
+					bat 'docker run --name emp-insurance -d -p 8082:8082 emp-insurance:latest'
 				}
     		  
    		 }
