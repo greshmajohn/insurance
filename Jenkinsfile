@@ -43,7 +43,7 @@ pipeline {
 					
 					withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
         			bat "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-         			bat 'docker push greshmajithin/emp-insurance:latest'
+         			bat 'docker push emp-insurance:latest'
          			}
 				}
     		  
