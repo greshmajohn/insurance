@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM jenkins/jenkins
 VOLUME /tmp/app
 EXPOSE 8082
 WORKDIR /home
