@@ -30,7 +30,7 @@ pipeline {
 				}
     		  
    		 }
-   		 stage('Docker Build') {
+   		 stage('Docker Deployment') {
 				steps{
 					echo "docker deployment"
 					
