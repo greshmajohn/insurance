@@ -1,5 +1,8 @@
 pipeline {
-	agent none
+	agent any
+	triggers {
+        pollSCM '* * * * *'
+    }
   stages {
   	stage('Maven Install') {
     	agent {
