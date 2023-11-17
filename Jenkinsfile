@@ -10,7 +10,12 @@ pipeline {
 	
 	stages{
 	
-	
+		stage('Clone project') {
+		
+   			steps{
+				checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/greshmajohn/insurance.git']])
+			}
+		}
 		
 		stage('Build') {
    			steps{
@@ -25,6 +30,12 @@ pipeline {
 		stage('Docker Build') {
 				steps{
 					echo "Build docker image"
+					if docker image inspect emp-insurance >/dev/null 2>&1; then
+    					echo "Image exists locally"
+					else
+   						 echo "Image does not exist locally"
+					fi
+					
 					bat 'docker build -t emp-insurance:latest .'
 					
 				}
