@@ -1,9 +1,5 @@
 pipeline {
-	agent {
-		docker:latest
-		docker-commons:latest
-		docker-workflow:latest
-	}
+	agent none
   stages {
   	stage('Maven Install') {
     	agent {
