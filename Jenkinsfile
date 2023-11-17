@@ -2,8 +2,8 @@ pipeline {
 	agent any
   stages {
   	stage('Maven Install') {
-    	agent {
-      	any  {
+    	docker-plugin {
+      	  {
         	image 'maven:3.5.0'
         }
       }
