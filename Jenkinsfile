@@ -22,7 +22,7 @@ pipeline {
 				 bat 'mvn clean install'
 			}
 		}
-		stage('Build') {
+		stage('test') {
    			steps{
 				echo "testing"
 			}
