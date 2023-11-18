@@ -55,7 +55,22 @@ pipeline {
    		 		bat 'docker  system prune'
    		 	}
    		 }
+   		 
+   		 notifyBuild()
 	}
  
   
+}
+
+node{
+
+	def notifyBuild(){
+	
+	 // build status of null means successful
+  		buildStatus =  buildStatus ?: 'SUCCESSFUL'
+		mail bcc: '', body: '''Deployment successfull for repository - Insurance
+
+		Regards
+		CICD Admin''', cc: '', from: '', replyTo: '', subject: 'Insurance: CICD Deployment Successful', to: 'greshmaj99@gmail.com'
+	}
 }
