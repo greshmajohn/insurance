@@ -56,7 +56,11 @@ pipeline {
    		 	}
    		 }
    		 
-   		 notifyBuild()
+   		 post {
+        		always {
+        			notifyBuild()
+        		}
+        	}
 	}
  
   
