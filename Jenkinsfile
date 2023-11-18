@@ -40,11 +40,8 @@ pipeline {
    		 stage('Docker Deployment') {
 				steps{
 					echo "docker deployment"
+					bat 'docker push emp-insurance:latest'
 					
-					withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-        			bat "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-         			bat 'docker push emp-insurance:latest'
-         			}
 				}
     		  
    		 }
