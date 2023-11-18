@@ -40,7 +40,7 @@ pipeline {
    		 stage('Docker Deployment') {
 				steps{
 					echo "docker deployment"
-					bat 'docker login -u "greshmajithin" -p "Jinkuttan@2017" docker.io'
+					bat 'docker login -u "greshmajithin" -p "Jinkuttan@2017" '
 					bat 'docker push emp-insurance:latest'
 					
 				}
