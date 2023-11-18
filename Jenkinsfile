@@ -48,6 +48,13 @@ pipeline {
 				}
     		  
    		 }
+   		 stage('Docker Deployment') {
+   		 
+   		 	steps{
+   		 		echo "Delete all dangling resources"
+   		 		bat 'docker  system prune'
+   		 	}
+   		 }
 	}
  
   
