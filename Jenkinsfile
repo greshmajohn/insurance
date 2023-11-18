@@ -48,7 +48,7 @@ pipeline {
 				}
     		  
    		 }
-   		 stage('Docker Deployment') {
+   		 stage('Docker Clean up') {
    		 
    		 	steps{
    		 		echo "Delete all dangling resources"
