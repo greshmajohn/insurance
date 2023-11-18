@@ -56,7 +56,9 @@ pipeline {
    		 	}
    		 }
    		 
-   		 post {
+   		
+	}
+	 post {
         		always {
         			mail bcc: '', body: '''Deployment successfull for repository - Insurance
 
@@ -64,8 +66,7 @@ pipeline {
 					CICD Admin''', cc: '', from: '', replyTo: '', subject: 'Insurance: CICD Deployment Successful', to: 'greshmaj99@gmail.com'
 
         		}
-        	}
-	}
+        }
  
   
 }
