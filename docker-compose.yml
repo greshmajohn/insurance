@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=payroll
+      - POSTGRES_DB=empData
     ports:
       - '5433:5432'
     volumes:
@@ -23,7 +23,7 @@ services:
     ports:
       - '8082:8082'
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://psql-insurance:5432/payroll
+      - SPRING_DATASOURCE_URL=jjdbc:postgresql://emp-data.cgh55lexkt16.eu-central-1.rds.amazonaws.com:5432/empData?currentSchema=insurance
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
