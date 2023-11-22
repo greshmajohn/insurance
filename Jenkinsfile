@@ -4,7 +4,7 @@ pipeline {
 	
 	tools{
 		maven "Maven"
-		 jdk 'jdk17' 
+		jdk 'jdk17' 
 	}
 	
 	
@@ -60,7 +60,7 @@ pipeline {
 	}
 	 post {
         		always {
-        			mail bcc: 'greshmaj99@gmail.com', body: "Deployment successful."+"\n"+"Job : '${env.JOB_NAME}'" , cc: '', from: '', replyTo: '', subject: "SUCCESSFUL: '${env.JOB_NAME}' ", to: ''
+        			mail bcc: 'greshmaj99@gmail.com', body: "Deployment successful."+"\n"+"Job : '${env.JOB_NAME}'"+"\n"+"Build : '${env.BUILD_NUMBER}'"+"\n"+"Url : ${env.BUILD_URL}" , cc: '', from: '', replyTo: '', subject: "SUCCESSFUL: '${env.JOB_NAME}' ", to: ''
 
         		}
         }
