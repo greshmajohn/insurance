@@ -60,10 +60,8 @@ pipeline {
 	}
 	 post {
         		always {
-        			mail bcc: 'jithinraju220@gmail.com', 
-        			body: '''Job  :   ${env.JOB_NAME}
-					Build No  :    ${env.BUILD_NUMBER}
-					Url    :    ${env.BUILD_URL}''', cc: '', from: '', replyTo: '', subject: 'Deployment Success: ${env.JOB_NAME}', to: 'greshmaj99@gmail.com'
+        			mail bcc: 'greshmaj99@gmail.com', body: 'Deployment successful for repository - Insurance', cc: '', from: '', replyTo: '', subject: "SUCCESSFUL: '${env.JOB_NAME}' ", to: ''
+
         		}
         }
  
